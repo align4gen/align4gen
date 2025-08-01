@@ -67,6 +67,26 @@
         align-items: center;
     }
 
+    .custom-slider-container-v2 {
+        width: 100%;
+        max-width: 900px; /* 슬라이더의 최대 너비 */
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .custom-slider-v2 {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .custom-slide-v2 {
+        min-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .custom-gif-wrapper {
         display: flex;
         justify-content: center; /* Horizontally centers the content */
@@ -295,10 +315,10 @@ Align4Gen is evaluated on both unconditional and class-conditional video generat
 
       <div class="spacer"></div>
 
-        <div class="custom-slider-container">
-        <div class="custom-slider" id="custom-slider">
+        <div class="custom-slider-container-v2">
+        <div class="custom-slider-v2" id="custom-slider-v2">
 
-            <div class="custom-slide">
+            <div class="custom-slide-v2">
                 <div class="custom-gif-wrapper">
                     <div class="custom-gif-container">
                         <img src="./static/images/comp/3_2.gif" alt="GIF 1">
@@ -315,7 +335,7 @@ Align4Gen is evaluated on both unconditional and class-conditional video generat
                 </div>
             </div>
      
-            <div class="custom-slide">
+            <div class="custom-slide-v2">
                 <div class="custom-gif-wrapper">
                     <div class="custom-gif-container">
                         <img src="./static/images/comp/1_2.gif" alt="GIF 4">
@@ -332,8 +352,7 @@ Align4Gen is evaluated on both unconditional and class-conditional video generat
                 </div>
             </div>
 
-            <div class="custom-slide">
-              <div class="custom-top-caption">"Ashtray full of butts on table, smoke flowing on black background, close-up."</div>
+            <div class="custom-slide-v2">
               <div class="custom-gif-wrapper">
                   <div class="custom-gif-container">
                       <img src="./static/images/comp/2_2.gif" alt="GIF 4">
@@ -405,16 +424,16 @@ Align4Gen is evaluated on both unconditional and class-conditional video generat
             </div> -->
         </div>
 
-        <button class="custom-arrow custom-prev" onclick="moveCustomSlide(-1)">&#10094;</button>
-        <button class="custom-arrow custom-next" onclick="moveCustomSlide(1)">&#10095;</button>
+        <button class="custom-arrow custom-prev" onclick="moveCustomSlidev2(-1)">&#10094;</button>
+        <button class="custom-arrow custom-next" onclick="moveCustomSlidev2(1)">&#10095;</button>
 
         <div class="dots-container">
-          <span class="dot" onclick="setCurrentSlide(0)"></span>
-          <span class="dot" onclick="setCurrentSlide(1)"></span>
-          <span class="dot" onclick="setCurrentSlide(2)"></span>
-          <span class="dot" onclick="setCurrentSlide(3)"></span>
-          <span class="dot" onclick="setCurrentSlide(4)"></span>
-          <span class="dot" onclick="setCurrentSlide(5)"></span>
+          <span class="dot" onclick="setCurrentSlidev2(0)"></span>
+          <span class="dot" onclick="setCurrentSlidev2(1)"></span>
+          <span class="dot" onclick="setCurrentSlidev2(2)"></span>
+          <span class="dot" onclick="setCurrentSlidev2(3)"></span>
+          <span class="dot" onclick="setCurrentSlidev2(4)"></span>
+          <span class="dot" onclick="setCurrentSlidev2(5)"></span>
         </div>
       </div>
 
@@ -661,6 +680,41 @@ $(function(){
     updateDots();
 </script>
 
+<script>
+    let currentCustomIndexv2 = 0;
+    const customSliderv2 = document.getElementById('custom-slider-v2');
+    const totalCustomSlidesv2 = document.querySelectorAll('.custom-slide-v2').length;
+    const dotsv2 = document.querySelectorAll('.dot');
+
+    function updateDotsv2() {
+        dotsv2.forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === currentCustomIndexv2) {
+                dot.classList.add('active');
+            }
+        });
+    }
+
+    function moveCustomSlidev2(direction) {
+        currentCustomIndexv2 += direction;
+        if (currentCustomIndexv2 < 0) {
+            currentCustomIndexv2 = totalCustomSlidesv2 - 1;
+        } else if (currentCustomIndexv2 >= totalCustomSlidesv2) {
+            currentCustomIndexv2 = 0;
+        }
+        customSliderv2.style.transform = `translateX(-${currentCustomIndexv2 * 100}%)`;
+        updateDotsv2();
+    }
+
+    function setCurrentSlidev2(index) {
+        currentCustomIndexv2 = index;
+        customSliderv2.style.transform = `translateX(-${currentCustomIndexv2 * 100}%)`;
+        updateDotsv2();
+    }
+
+    // 초기 활성 점 업데이트
+    updateDotsv2();
+</script>
 <!-- Statcounter tracking code -->
   
 <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
