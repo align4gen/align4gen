@@ -187,6 +187,21 @@
         cursor: pointer;
     }
 
+    .dots-containerv2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    .dotv2 {
+        height: 15px;
+        width: 15px;
+        margin: 0 5px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+    }
+
     .active {
         background-color: #717171;
     }
@@ -427,13 +442,13 @@ Align4Gen is evaluated on both unconditional and class-conditional video generat
         <button class="custom-arrow custom-prev" onclick="moveCustomSlidev2(-1)">&#10094;</button>
         <button class="custom-arrow custom-next" onclick="moveCustomSlidev2(1)">&#10095;</button>
 
-        <div class="dots-container">
-          <span class="dot" onclick="setCurrentSlidev2(0)"></span>
-          <span class="dot" onclick="setCurrentSlidev2(1)"></span>
-          <span class="dot" onclick="setCurrentSlidev2(2)"></span>
-          <span class="dot" onclick="setCurrentSlidev2(3)"></span>
-          <span class="dot" onclick="setCurrentSlidev2(4)"></span>
-          <span class="dot" onclick="setCurrentSlidev2(5)"></span>
+        <div class="dots-containerv2">
+          <span class="dotv2" onclick="setCurrentSlidev2(0)"></span>
+          <span class="dotv2" onclick="setCurrentSlidev2(1)"></span>
+          <span class="dotv2" onclick="setCurrentSlidev2(2)"></span>
+          <span class="dotv2" onclick="setCurrentSlidev2(3)"></span>
+          <span class="dotv2" onclick="setCurrentSlidev2(4)"></span>
+          <span class="dotv2" onclick="setCurrentSlidev2(5)"></span>
         </div>
       </div>
 
@@ -684,7 +699,7 @@ $(function(){
     let currentCustomIndexv2 = 0;
     const customSliderv2 = document.getElementById('custom-slider-v2');
     const totalCustomSlidesv2 = document.querySelectorAll('.custom-slide-v2').length;
-    const dotsv2 = document.querySelectorAll('.dot');
+    const dotsv2 = document.querySelectorAll('.dotv2');
 
     function updateDotsv2() {
         dotsv2.forEach((dot, index) => {
